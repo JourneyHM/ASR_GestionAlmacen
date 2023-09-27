@@ -25,10 +25,10 @@ from drf_yasg import openapi
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'Categorias', views.CategoriaViewSet)
 router.register(r'Materiales', views.MaterialViewSet)
 router.register(r'Pedidos_de_clientes', views.PedidoClienteViewSet)
 router.register(r'Ordenes_de_Compra', views.OrdenCompraViewSet)
-router.register(r'Almacen', views.AlmacenViewSet)
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -49,4 +49,5 @@ urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/schema/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('ASR/dashboard/', views.dashboard, name = "index"),
 ]

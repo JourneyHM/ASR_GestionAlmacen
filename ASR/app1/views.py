@@ -5,6 +5,11 @@ from rest_framework import permissions
 from ASR.app1.serializers import UserSerializer, GroupSerializer
 from .serializers import *
 
+
+def dashboard(request):
+    return render(request, "app1/index.html")
+
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -19,6 +24,14 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that MyModel to be viewed or edited.
+    """
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class MaterialViewSet(viewsets.ModelViewSet):
@@ -45,12 +58,5 @@ class OrdenCompraViewSet(viewsets.ModelViewSet):
     serializer_class = OrdenCompraSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class AlmacenViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that MyModel to be viewed or edited.
-    """
-    queryset = Almacen.objects.all()
-    serializer_class = AlmacenSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     

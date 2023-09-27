@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-eq_a$!^^$%ld3au02w9wt9^j(&zq=mlvz$=vtj-%-(p)p1#5vf
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "CST"
 
 USE_I18N = True
 

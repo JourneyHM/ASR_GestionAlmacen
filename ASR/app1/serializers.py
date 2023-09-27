@@ -13,23 +13,24 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ['url', 'name']
 
+class CategoriaSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Categoria
+        fields = ['nombre', 'descripcion']
+
 class MaterialSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Material
-        fields = ['nombre', 'cantidad_stock', 'descripcion', 'preciou', 'unidad_medida', 'lead_time', 'agotado']
+        fields = ['nombre', 'categoria', 'cantidad_stock', 'descripcion', 'preciou', 'unidad_medida', 'lead_time', 'agotado']
 
 class PedidoClienteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = PedidoCliente
-        fields = ['folio', 'cliente', 'material', 'cantidad_pedida', 'compra_unica']
+        fields = ['folio', 'cliente', 'fecha', 'material', 'cantidad_pedida', 'compra_unica']
 
 class OrdenCompraSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = OrdenCompra
-        fields = ['num_orden', 'material', 'cantidad_requerida']
+        fields = ['num_orden', 'fecha', 'material', 'cantidad_requerida']
 
-class AlmacenSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Almacen
-        fields = ['stock', 'ordencompra', 'pedidocliente']
 
