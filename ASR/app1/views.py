@@ -9,6 +9,20 @@ from .serializers import *
 def dashboard(request):
     return render(request, "app1/index.html")
 
+def stock(request):
+    return render(request, "app1/stock.html")
+
+def ordenesList(request):
+    return render(request, "app1/ordenes-list.html")
+
+def pedidosList(request):
+    return render(request, "app1/pedidos-list.html")
+
+def buttons(request):
+    return render(request, "app1/ui-buttons.html")
+
+def cards(request):
+    return render(request, "app1/ui-card.html")
 
 class UserViewSet(viewsets.ModelViewSet):
     """

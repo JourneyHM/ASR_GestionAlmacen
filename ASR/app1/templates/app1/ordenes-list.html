@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ASR - Buttons</title>
+  <title>ASR - Órdenes de Compra</title>
   <link rel="shortcut icon" type="image/png" href="{% static 'assets/images/logos/favicon.png' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/styles.min.css' %}" />
 </head>
@@ -206,40 +206,108 @@
             </ul>
           </div>
         </nav>
-      </header>      <!--  Header End -->
+      </header>
+      <!--  Header End -->
       <div class="container-fluid">
-        <div class="container-fluid">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Buttons</h5>
-              <div class="card">
-                <div class="card-body p-4">
-                  <button type="button" class="btn btn-primary m-1">Primary</button>
-                  <button type="button" class="btn btn-secondary m-1">Secondary</button>
-                  <button type="button" class="btn btn-success m-1">Success</button>
-                  <button type="button" class="btn btn-danger m-1">Danger</button>
-                  <button type="button" class="btn btn-warning m-1">Warning</button>
-                  <button type="button" class="btn btn-info m-1">Info</button>
-                  <button type="button" class="btn btn-light m-1">Light</button>
-                  <button type="button" class="btn btn-dark m-1">Dark</button>
-                  <button type="button" class="btn btn-link m-1">Link</button>
-                </div>
-              </div>
-              <h5 class="card-title fw-semibold mb-4">Outline buttons</h5>
-              <div class="card mb-0">
-                <div class="card-body p-4">
-                  <button type="button" class="btn btn-outline-primary m-1">Primary</button>
-                  <button type="button" class="btn btn-outline-secondary m-1">Secondary</button>
-                  <button type="button" class="btn btn-outline-success m-1">Success</button>
-                  <button type="button" class="btn btn-outline-danger m-1">Danger</button>
-                  <button type="button" class="btn btn-outline-warning m-1">Warning</button>
-                  <button type="button" class="btn btn-outline-info m-1">Info</button>
-                  <button type="button" class="btn btn-outline-light m-1">Light</button>
-                  <button type="button" class="btn btn-outline-dark m-1">Dark</button>
-                  <button type="button" class="btn btn-outline-link m-1">Link</button>
-                </div>
-              </div>
-            </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold mb-4">Lista de Órdenes de Compra</h5>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Id</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Assigned</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Name</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Priority</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Budget</h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">1</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">Sunil Joshi</h6>
+                            <span class="fw-normal">Web Designer</span>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">Elite Admin</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary rounded-3 fw-semibold">Low</span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">$3.9</h6>
+                        </td>
+                      </tr> 
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">2</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">Andrew McDownland</h6>
+                            <span class="fw-normal">Project Manager</span>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">Real Homes WP Theme</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-secondary rounded-3 fw-semibold">Medium</span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">$24.5k</h6>
+                        </td>
+                      </tr> 
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">3</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">Christopher Jamil</h6>
+                            <span class="fw-normal">Project Manager</span>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">MedicalPro WP Theme</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-danger rounded-3 fw-semibold">High</span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">$12.8k</h6>
+                        </td>
+                      </tr>      
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">4</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">Nirav Joshi</h6>
+                            <span class="fw-normal">Frontend Engineer</span>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">Hosting Press HTML</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-success rounded-3 fw-semibold">Critical</span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">$2.4k</h6>
+                        </td>
+                      </tr>                       
+                    </tbody>
+                  </table>
           </div>
         </div>
       </div>

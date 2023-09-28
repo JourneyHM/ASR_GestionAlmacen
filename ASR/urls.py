@@ -50,4 +50,9 @@ urlpatterns = [
     path('api/schema/swagger-ui/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/schema/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('ASR/dashboard/', views.dashboard, name = "index"),
+    path('ASR/dashboard/stock', views.stock, name = "stock"),
+    path('ASR/dashboard/ordenes', views.ordenesList, name = "ordenes"),
+    path('ASR/dashboard/pedidos', views.pedidosList, name = "pedidos"),
+    path('ASR/dashboard/botones', views.buttons, name = "buttons"),
+    path('ASR/dashboard/cards', views.cards, name = "cards"),
 ]
