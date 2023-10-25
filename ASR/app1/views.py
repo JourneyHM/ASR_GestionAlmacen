@@ -10,13 +10,15 @@ def dashboard(request):
     return render(request, "app1/index.html")
 
 def stock(request):
-    return render(request, "app1/stock.html")
+    materiales = list(Material.objects.all())
+    ctx = {'materiales':materiales}
+    return render(request, "app1/stock.html", ctx)
 
 def ordenesList(request):
-    return render(request, "app1/ordenes-list.html")
-
-def pedidosList(request):
-    return render(request, "app1/pedidos-list.html")
+    ordenes = list(OrdenCompra.objects.all())
+    pedidos = list(PedidoCliente.objects.all())
+    ctx = {"ordenes": ordenes, "pedidos":pedidos}
+    return render(request, "app1/ordenes_pedidos-list.html", ctx)
 
 def buttons(request):
     return render(request, "app1/ui-buttons.html")
@@ -30,7 +32,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset  = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
@@ -38,15 +40,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-class CategoriaViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that MyModel to be viewed or edited.
-    """
-    queryset = Categoria.objects.all()
-    serializer_class = CategoriaSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 class MaterialViewSet(viewsets.ModelViewSet):
     """
@@ -54,7 +48,6 @@ class MaterialViewSet(viewsets.ModelViewSet):
     """
     queryset = Material.objects.all()
     serializer_class = MaterialSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 class PedidoClienteViewSet(viewsets.ModelViewSet):
     """
@@ -62,7 +55,6 @@ class PedidoClienteViewSet(viewsets.ModelViewSet):
     """
     queryset = PedidoCliente.objects.all()
     serializer_class = PedidoClienteSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 class OrdenCompraViewSet(viewsets.ModelViewSet):
     """
@@ -70,7 +62,6 @@ class OrdenCompraViewSet(viewsets.ModelViewSet):
     """
     queryset = OrdenCompra.objects.all()
     serializer_class = OrdenCompraSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
 
     

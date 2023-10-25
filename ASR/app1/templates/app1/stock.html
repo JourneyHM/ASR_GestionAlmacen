@@ -29,12 +29,11 @@
             <i class="ti ti-x fs-8"></i>
           </div>
         </div>
-        <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Home</span>
+              <span class="hide-menu">VISUALIZACIÓN</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{% url 'index' %}" aria-expanded="false">
@@ -45,27 +44,19 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{% url 'ordenes' %}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-article"></i>
-                </span>
-                <span class="hide-menu">Órdenes de compra</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{% url 'pedidos' %}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-description"></i>
-                </span>
-                <span class="hide-menu">Pedidos de clientes</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
               <a class="sidebar-link" href="{% url 'stock' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
                 <span class="hide-menu">Stock</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{% url 'ordenes y pedidos' %}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-file-description"></i>
+                </span>
+                <span class="hide-menu">Órdenes y Pedidos</span>
               </a>
             </li>
             <li class="nav-small-cap">
@@ -154,11 +145,11 @@
             </li>
           </ul>
         </nav>
-        <!-- End Sidebar navigation -->
+        <!------------------------------------------ End Sidebar navigation ------------------------------------------------>
       </div>
-      <!-- End Sidebar scroll-->
+      <!--------------------------------------------- End Sidebar scroll---------------------------------------------------->
     </aside>
-    <!--  Sidebar End -->
+    <!-------------------------------------------------  Sidebar End ------------------------------------------------------->
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
@@ -209,50 +200,67 @@
       </header>
       <!--  Header End -->
       <div class="container-fluid">
-        <h1>Productos en Almacén</h1>
-        <br>
-        <div class="container-fluid">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="card">
-                    <img src="{% static 'assets/images/products/s4.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the
-                        card's content.</p>
-                      <button type="button" class="btn btn-outline-dark m-1">Ver Stock</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <img src="{% static 'assets/images/products/s4.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the
-                        card's content.</p>
-                      <button type="button" class="btn btn-outline-dark m-1">Ver Stock</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <img src="{% static 'assets/images/products/s4.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the
-                        card's content.</p>
-                      <button type="button" class="btn btn-outline-dark m-1">Ver Stock</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold mb-4">Productos en Almacén</h5>
+                <div class="table-responsive">
+                  <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                      <tr>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">UM</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Nombre</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Categoría</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Ubicación</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Cantidad</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Acción 1</h6>
+                        </th>
+                        <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Acción 2</h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in materiales%}
+                      <tr>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{item.unidad_medida}}</h6></td>
+                        <td class="border-bottom-0">
+                            <h6 class="fw-semibold mb-1">{{item.nombre}}</h6>
+                            <span class="fw-normal">{{item.clave}}</span>                          
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal">{{item.categoria}}</p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <span class="badge bg-primary rounded-3 fw-semibold">{{item.ubicacion}}</span>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4">{{item.cantidad_stock}}</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <a href = "#" class="btn btn-outline-success m-1">Modificar</a>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0">
+                          <a href = "#" class="btn btn-outline-danger m-1">Eliminar</a>
+                        </td>
+                      </tr> 
+                      {% endfor %}                     
+                    </tbody>
+                  </table>
           </div>
         </div>
       </div>

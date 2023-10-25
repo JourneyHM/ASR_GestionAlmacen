@@ -3,25 +3,42 @@ from django.utils import timezone
 
 # Create your models here.
 
-class Categoria(models.Model):
-    nombre = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombre')
-    descripcion = models.CharField(max_length= 200, null=True, blank=True, verbose_name='Descripción')
-
-    def __str__ (self):
-        return "Categoría: {}".format(self.nombre)
-
 class Material(models.Model):
+    OPCIONES_CATEGORIA = [
+        ('Hule', 'Productos de Hule'),
+        ('Polietileno', 'Polietileno'),
+        ('Extruido', 'Extruido'),
+        ('Cintas', 'Cintas'),
+        ('Espumas Autoadheribles', 'Espumas Autoadheribles'),
+        ('Piezas Troqueladas', 'Piezas Troqueladas'),
+        ('Empaque', 'Productos para Empaque'),
+        ('Juntas Metálicas', 'Juntas Metálicas'),
+        ('Aislamientos Térmicos', 'Aislamientos Térmicos'),
+        ('Sellos Empaques', 'Sellos o Empaques'),
+        ('Unicel', 'Productos de Unicel'),
+        ('Polifom', 'Polifom'),
+        ('Poliburbuja', 'Poliburbuja'),
+        ('Fibra de Vidrio', 'Fibra de Vidrio'),
+        ('Cordon', 'Cordon'),
+        ('PTFE', 'Productos PTFE'),
+        ('Especiales', 'Productos Especiales'),
+    ]
     nombre = models.CharField(max_length=50, null=True, blank=True, verbose_name='Nombre')
-    categoria = models.ForeignKey(Categoria, null=True, blank=True, on_delete=models.CASCADE)
+    clave = models.CharField(max_length=50, null=True, blank=True, verbose_name='Clave')
+    ubicacion = models.CharField(max_length=50, null=True, blank=True, verbose_name='Ubicación')
+    categoria = models.CharField(max_length=25, choices=OPCIONES_CATEGORIA,default='Hule', verbose_name='Categoría')
     cantidad_stock = models.PositiveIntegerField(null=True, blank=True, verbose_name='Cantidad en stock')
-    descripcion = models.CharField(max_length= 200, null=True, blank=True, verbose_name='Descripción')
-    preciou = models.FloatField(null=True, blank=True, verbose_name='Precio Unitario')
     unidad_medida = models.CharField(max_length=50, null=True, blank=True, verbose_name='Unidad de Medida')
-    lead_time = models.CharField(max_length=50, null=True, blank=True, verbose_name='Tiempo de retorno')
-    agotado = models.BooleanField(default=False, verbose_name='¿Está Agotado?')
 
     def __str__ (self):
-        return "Material: {}".format(self.nombre)
+        return "{}".format(self.nombre)
+    
+    def actualizar_stock(self, cantidad_pedida):
+        if cantidad_pedida > 0:
+            self.cantidad_stock -= cantidad_pedida
+            self.save()
+
+
 
 class PedidoCliente(models.Model):
     folio = models.CharField(max_length=50, null=True, blank=True, verbose_name='Folio')
@@ -33,15 +50,26 @@ class PedidoCliente(models.Model):
 
     def __str__ (self):
         return "Pedido del Cliente: {} - {} - {}".format(self.folio, self.cliente, self.fecha)
+    
+    def save(self, *args, **kwargs):
+        super(PedidoCliente, self).save(*args, **kwargs)
+        if self.compra_unica:
+            self.material.actualizar_stock(self.cantidad_pedida)
 
 class OrdenCompra(models.Model):
     num_orden = models.CharField(max_length=50, null=True, blank=True, verbose_name='Número de orden')
+    proveedor = models.CharField(max_length=50, null=True, blank=True, verbose_name='Proveedor')
     material = models.ForeignKey(Material, null=True, blank=True, on_delete=models.CASCADE)
     cantidad_requerida =  models.PositiveIntegerField(default=0, verbose_name='Cantidad requerida')
     fecha = models.DateTimeField(default=timezone.now, null=True, blank=True, verbose_name='Fecha')
     
     def __str__ (self):
         return "Orden de compra: {} - {}".format(self.num_orden, self.fecha)
+    
+    def save(self, *args, **kwargs):
+        super(OrdenCompra, self).save(*args, **kwargs)
+        self.material.cantidad_stock += self.cantidad_requerida
+        self.material.save()
 
 
 

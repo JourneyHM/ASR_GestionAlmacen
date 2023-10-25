@@ -25,7 +25,6 @@ from drf_yasg import openapi
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'Categorias', views.CategoriaViewSet)
 router.register(r'Materiales', views.MaterialViewSet)
 router.register(r'Pedidos_de_clientes', views.PedidoClienteViewSet)
 router.register(r'Ordenes_de_Compra', views.OrdenCompraViewSet)
@@ -51,8 +50,7 @@ urlpatterns = [
     path('api/schema/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('ASR/dashboard/', views.dashboard, name = "index"),
     path('ASR/dashboard/stock', views.stock, name = "stock"),
-    path('ASR/dashboard/ordenes', views.ordenesList, name = "ordenes"),
-    path('ASR/dashboard/pedidos', views.pedidosList, name = "pedidos"),
+    path('ASR/dashboard/ordenes_y_pedidos', views.ordenesList, name = "ordenes y pedidos"),
     path('ASR/dashboard/botones', views.buttons, name = "buttons"),
     path('ASR/dashboard/cards', views.cards, name = "cards"),
 ]
